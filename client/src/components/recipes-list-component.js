@@ -7,6 +7,7 @@ const Recipe = props => (
         <td>{props.recipe.recipe_name}</td>
         <td>{props.recipe.recipe_time}</td>
         <td>{props.recipe.recipe_ingredients}</td>
+        <td></td>
         <td>
             <Link to={"/edit/" + props.recipe._id}>Edit/View</Link>
         </td>
@@ -38,7 +39,6 @@ class RecipesList extends Component {
     render() {
         return (
             <div>
-                <h3>Recipes</h3>
                 <table className="table table-striped" style={{ marginTop: 20 }}>
                     <thead>
                         <tr>
@@ -46,6 +46,8 @@ class RecipesList extends Component {
                             <th>Cooking time</th>
                             <th>Ingredients</th>
                             <th>Starred</th>
+                            <th></th>
+
                         </tr>
                     </thead>
                     <tbody>

@@ -6,41 +6,34 @@ import ViewRecipe from './components/view-recipe-component';
 import AddRecipe from './components/add-recipe-component';
 
 import "bootstrap/dist/css/bootstrap.min.css";
-import logo from "./logo.jpg";
 
+import logo from "./logo.jpg";
+import { Navbar, Nav, Form, FormControl, Button } from 'react-bootstrap';
 
 class App extends Component {
   render() {
     return (
       <Router>
         <div className="container">
-
-          <nav className="navbar navbar-expand-lg navbar-light bg-light">
-            <a className="navbar-brand" href="/">
-              <img src={logo} width="130" height="130" alt="recipes-logo" />
-            </a>
-            <Link to="/" className="navbar-brand">MERN Stack APP</Link>
-            <div className="nav-collapse">
-              <ul className="navbar-nav mr-auto">
-                <li className="navbar-item">
-                  <Link to="/" className="nav-link">Recipes</Link>
-                </li>
-                <li className="navbar-item">
-                  <Link to="/view/:id" className="nav-link">View Recipe</Link>
-                </li>
-                <li className="navbar-item">
-                  <Link to="/add" className="nav-link">Add Recipe</Link>
-                </li>
-              </ul>
-            </div>
-          </nav>
+          <Navbar bg="light" expand="lg">
+            <Navbar.Brand href="#home"><img src={logo} width="130" height="130" alt="recipes-logo" /> Recipes</Navbar.Brand>
+            <Navbar.Toggle aria-controls="basic-navbar-nav" />
+            <Navbar.Collapse id="basic-navbar-nav">
+              <Nav className="mr-auto">
+                <Nav.Link href="/">All Recipes</Nav.Link>
+                <Nav.Link href="/add">Add New Recipe</Nav.Link>
+              </Nav>
+              <Form inline>
+                <FormControl type="text" placeholder="Search" className="mr-sm-2" />
+                <Button variant="outline-success">Search</Button>
+              </Form>
+            </Navbar.Collapse>
+          </Navbar>
           <Route path="/" exact component={RecipesList} />
-          <Route path="/view/:id" component={ViewRecipe} />
+          <Route path="/edit/:id" component={ViewRecipe} />
           <Route path="/add" component={AddRecipe} />
         </div>
-
       </Router>
-
     );
   }
 }

@@ -98,7 +98,7 @@ class AddRecipe extends Component {
                             className="form-control"
                             value={this.state.recipe_ingredients}
                             onChange={this.onChangeRecipeIngredients}
-                            placeholder='chickpeas, garlic, parley, cumin ...'
+                            placeholder='chickpeas, garlic, parsley, cumin ...'
                         />
                     </div>
                     <div className="form-group">
