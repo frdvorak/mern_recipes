@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import "@fortawesome/fontawesome-free/css/all.css";
 
 const Recipe = props => (
     <tr>
         <td>{props.recipe.recipe_name}</td>
         <td>{props.recipe.recipe_time}</td>
         <td>{props.recipe.recipe_ingredients}</td>
-        <td></td>
+        <td><i className="far fa-star"></i> </td>
         <td>
             <Link to={"/edit/" + props.recipe._id}>Edit/View</Link>
         </td>
@@ -43,7 +44,7 @@ class RecipesList extends Component {
                     <thead>
                         <tr>
                             <th>Name</th>
-                            <th>Cooking time</th>
+                            <th><i className="far fa-clock"></i></th>
                             <th>Ingredients</th>
                             <th>Starred</th>
                             <th></th>

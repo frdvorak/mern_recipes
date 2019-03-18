@@ -7,6 +7,7 @@ import AddRecipe from './components/add-recipe-component';
 
 import "bootstrap/dist/css/bootstrap.min.css";
 
+
 import logo from "./logo.jpg";
 import { Navbar, Nav, Form, FormControl, Button } from 'react-bootstrap';
 
@@ -16,7 +17,7 @@ class App extends Component {
       <Router>
         <div className="container">
           <Navbar bg="light" expand="lg">
-            <Navbar.Brand href="#home"><img src={logo} width="130" height="130" alt="recipes-logo" /> Recipes</Navbar.Brand>
+            <Navbar.Brand href="/"><img src={logo} width="130" height="130" alt="recipes-logo" /> Recipes</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="mr-auto">
