@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom"
+import { BrowserRouter as Router, Route } from "react-router-dom"
 
 import RecipesList from './components/recipes-list-component';
-import ViewRecipe from './components/view-recipe-component';
+import UpdateRecipe from './components/update-recipe-component';
 import AddRecipe from './components/add-recipe-component';
 
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -26,12 +26,12 @@ class App extends Component {
               </Nav>
               <Form inline>
                 <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-                <Button variant="outline-success">Search</Button>
+                <Button variant="outline-dark">Search</Button>
               </Form>
             </Navbar.Collapse>
           </Navbar>
           <Route path="/" exact component={RecipesList} />
-          <Route path="/edit/:id" component={ViewRecipe} />
+          <Route path="/update/:id" component={UpdateRecipe} />
           <Route path="/add" component={AddRecipe} />
         </div>
       </Router>
