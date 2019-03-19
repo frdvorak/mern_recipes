@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { Button } from 'react-bootstrap';
 
 class AddRecipe extends Component {
     constructor(props) {
@@ -112,6 +113,7 @@ class AddRecipe extends Component {
                     </div>
                     <div className="form-group">
                         <input type="submit" value="Add Recipe" className="btn btn-dark" />
+                        <Button className="btn-dark float-right" href="/">Go Back</Button>
                     </div>
                 </form>
             </div>

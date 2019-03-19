@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { Button } from 'react-bootstrap';
 
 class UpdateRecipe extends Component {
     constructor(props) {
@@ -30,17 +31,25 @@ class UpdateRecipe extends Component {
     onSubmit = () => {
         console.log('sss');
     }
-    onChangeRecipeName = () => {
-        console.log('sss');
+    onChangeRecipeName = (e) => {
+        this.setState({
+            recipe_name: e.target.value
+        });
     }
-    onChangeRecipeTime = () => {
-        console.log('sss');
+    onChangeRecipeTime = (e) => {
+        this.setState({
+            recipe_time: e.target.value
+        });
     }
-    onChangeRecipeIngredients = () => {
-        console.log('sss');
+    onChangeRecipeIngredients = (e) => {
+        this.setState({
+            recipe_ingredients: e.target.value
+        });
     }
-    onChangeRecipeImg = () => {
-        console.log('sss');
+    onChangeRecipeImg = (e) => {
+        this.setState({
+            recipe_ingredients: e.target.value
+        });
     }
     render() {
         return (
@@ -78,8 +87,11 @@ class UpdateRecipe extends Component {
                     </div>
                     <br />
                     <div className="form-group">
-                        <input type="submit" value="Update Recipe" className="btn btn-dark" />
+                        <input type="submit" value="Update Recipe" className="btn btn-dark float-left" />
+                        <Button className="btn-dark float-right" href="/">Go Back</Button>
                     </div>
+
+
                 </form>
             </div>
         );

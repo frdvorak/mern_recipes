@@ -5,19 +5,32 @@ import "@fortawesome/fontawesome-free/css/all.css";
 
 
 
-const Recipe = props => (
-    <tr>
-        <td>{props.recipe.recipe_name}</td>
-        <td>{props.recipe.recipe_time}</td>
-        <td>{props.recipe.recipe_ingredients}</td>
-        <td>
-            {props.recipe.recipe_starred ? <i className="fas fa-star"></i> : <i className="far fa-star"></i>}
-        </td>
-        <td>
-            <Link to={"/update/" + props.recipe._id}>Update</Link>
-        </td>
-    </tr>
-)
+class Recipe extends Component {
+    constructor(props) {
+        super(props);
+        this.state = { recipes: [] }
+    }
+    handleStarredClick = () => {
+        console.log('star was clicked');
+    }
+    render() {
+        return (
+            <tr>
+                <td>{this.props.recipe.recipe_name}</td>
+                <td>View</td>
+                <td className="text-center">{this.props.recipe.recipe_time + ' min'}</td>
+                <td>{this.props.recipe.recipe_ingredients}</td>
+                <td onClick={this.handleStarredClick}>
+                    {this.props.recipe.recipe_starred ? <i className="fas fa-star"></i> : <i className="far fa-star"></i>}
+                </td>
+                <td>
+                    <Link to={"/update/" + this.props.recipe._id}>Update</Link>
+                </td>
+                <td>Delete</td>
+            </tr>
+        )
+    }
+}
 
 class RecipesList extends Component {
     constructor(props) {
@@ -49,10 +62,12 @@ class RecipesList extends Component {
                     <thead>
                         <tr>
                             <th>Name</th>
-                            <th><i className="far fa-clock"></i></th>
+                            <th></th>
+                            <th className="text-center"><i className="far fa-clock"></i></th>
                             <th>Ingredients</th>
-                            <th>Starred</th>
-                            <th>Actions</th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
 
                         </tr>
                     </thead>
