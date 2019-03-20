@@ -4,38 +4,11 @@ import axios from 'axios';
 import "@fortawesome/fontawesome-free/css/all.css";
 
 
-
-class Recipe extends Component {
-    constructor(props) {
-        super(props);
-        this.state = { recipes: [] }
-    }
-    handleStarredClick = () => {
-        console.log('star was clicked');
-    }
-    render() {
-        return (
-            <tr>
-                <td>{this.props.recipe.recipe_name}</td>
-                <td>View</td>
-                <td className="text-center">{this.props.recipe.recipe_time + ' min'}</td>
-                <td>{this.props.recipe.recipe_ingredients}</td>
-                <td onClick={this.handleStarredClick}>
-                    {this.props.recipe.recipe_starred ? <i className="fas fa-star"></i> : <i className="far fa-star"></i>}
-                </td>
-                <td>
-                    <Link to={"/update/" + this.props.recipe._id}>Update</Link>
-                </td>
-                <td>Delete</td>
-            </tr>
-        )
-    }
-}
-
 class RecipesList extends Component {
     constructor(props) {
         super(props);
-        this.state = { recipes: [] }
+        this.state = { recipes: [] };
+
     }
 
     componentDidMount() {
@@ -48,11 +21,28 @@ class RecipesList extends Component {
             })
 
     }
-
+    handleStarClick = (currentRecipe) => {
+        console.log('aaa')
+    }
     recipeList() {
+        console.log(this);
         return this.state.recipes.map(function (currentRecipe, i) {
-            return <Recipe recipe={currentRecipe} key={i} />
-        })
+            return (
+                <tr key={i}>
+                    <td>{currentRecipe.recipe_name}</td>
+                    <td>View</td>
+                    <td className="text-center">{currentRecipe.recipe_time + ' min'}</td>
+                    <td>{currentRecipe.recipe_ingredients}</td>
+                    <td onClick={() => this.handleStarClick()}>
+                        {currentRecipe.recipe_starred ? <i className="fas fa-star"></i> : <i className="far fa-star"></i>}
+                    </td>
+                    <td>
+                        <Link to={"/update/" + currentRecipe._id}>Update</Link>
+                    </td>
+                    <td>Delete</td>
+                </tr>
+            )
+        }, this)
     }
 
     render() {
