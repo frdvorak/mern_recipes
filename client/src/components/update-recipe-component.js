@@ -5,6 +5,13 @@ import { Button } from 'react-bootstrap';
 class UpdateRecipe extends Component {
     constructor(props) {
         super(props);
+
+        this.onChangeRecipeName = this.onChangeRecipeName.bind(this);
+        this.onChangeRecipeTime = this.onChangeRecipeTime.bind(this);
+        this.onChangeRecipeIngredients = this.onChangeRecipeIngredients.bind(this);
+        this.onChangeRecipeImg = this.onChangeRecipeImg.bind(this);
+        this.onSubmit = this.onSubmit.bind(this);
+
         this.state = {
             recipe_name: '',
             recipe_time: '',
@@ -28,9 +35,8 @@ class UpdateRecipe extends Component {
                 console.log(error)
             })
     }
-    onSubmit = () => {
-        console.log('sss');
-    }
+
+
     onChangeRecipeName = (e) => {
         this.setState({
             recipe_name: e.target.value
@@ -48,12 +54,26 @@ class UpdateRecipe extends Component {
     }
     onChangeRecipeImg = (e) => {
         this.setState({
-            recipe_ingredients: e.target.value
+            recipe_img: e.target.value
         });
+    }
+    onSubmit = (e) => {
+        e.preventDefault();
+        const obj = {
+            recipe_name: this.state.recipe_name,
+            recipe_time: this.state.recipe_time,
+            recipe_ingredients: this.state.recipe_ingredients,
+            recipe_img: this.state.recipe_img,
+            recipe_starred: this.state.recipe_starred
+        };
+        axios.post('http://localhost:4000/recipes/update/' + this.props.match.params.id, obj)
+            .then(res => console.log(res.data));
+        this.props.history.push('/');
+        window.location.reload();
     }
     render() {
         return (
-            <div>
+            <div style={{ backgroundImage: `url(${this.state.recipe_img})` }}>
                 <h3>Update Recipe</h3>
                 <form onSubmit={this.onSubmit}>
                     <div className="form-group">
@@ -77,13 +97,15 @@ class UpdateRecipe extends Component {
                             className="form-control"
                             value={this.state.recipe_ingredients}
                             onChange={this.onChangeRecipeIngredients}
-                        /><label htmlFor="recipe_img">Image URL:</label>
+                        />
+                        <label htmlFor="recipe_img">Img URL:</label>
                         <input type="String"
                             id="recipe_img"
                             className="form-control"
                             value={this.state.recipe_img}
                             onChange={this.onChangeRecipeImg}
                         />
+
                     </div>
                     <br />
                     <div className="form-group">

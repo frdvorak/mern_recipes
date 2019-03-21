@@ -8,9 +8,7 @@ class RecipesList extends Component {
     constructor(props) {
         super(props);
         this.state = { recipes: [] };
-
     }
-
     componentDidMount() {
         axios.get('http://localhost:4000/recipes/')
             .then(response => {
@@ -19,13 +17,25 @@ class RecipesList extends Component {
             .catch(function (error) {
                 console.log(error);
             })
-
     }
-    handleStarClick = (currentRecipe) => {
-        console.log('aaa')
+    handleStarClick = (currentRecipe, i) => {
+        const recipes = [...this.state.recipes];
+        let obj = {
+            recipe_name: this.state.recipes[i].recipe_name,
+            recipe_time: this.state.recipes[i].recipe_time,
+            recipe_ingredients: this.state.recipes[i].recipe_ingredients,
+            recipe_img: this.state.recipes[i].recipe_img,
+            recipe_starred: this.state.recipes[i].recipe_starred
+        };
+
+        obj.recipe_starred = !obj.recipe_starred;
+        recipes[i] = obj;
+        console.log(recipes);
+        this.setState({ recipes: recipes });
+        axios.post('http://localhost:4000/recipes/update/' + this.state.recipes[i]._id, obj)
+            .then(res => console.log(res.data));
     }
     recipeList() {
-        console.log(this);
         return this.state.recipes.map(function (currentRecipe, i) {
             return (
                 <tr key={i}>
@@ -33,7 +43,7 @@ class RecipesList extends Component {
                     <td>View</td>
                     <td className="text-center">{currentRecipe.recipe_time + ' min'}</td>
                     <td>{currentRecipe.recipe_ingredients}</td>
-                    <td onClick={() => this.handleStarClick()}>
+                    <td onClick={() => this.handleStarClick(currentRecipe, i)}>
                         {currentRecipe.recipe_starred ? <i className="fas fa-star"></i> : <i className="far fa-star"></i>}
                     </td>
                     <td>

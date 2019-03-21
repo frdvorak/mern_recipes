@@ -104,7 +104,7 @@ class AddRecipe extends Component {
                     </div>
                     <div className="form-group">
                         <label>Image URL</label>
-                        <input type="text"
+                        <input type="String"
                             className="form-control"
                             value={this.state.recipe_img}
                             onChange={this.onChangeRecipeImg}
