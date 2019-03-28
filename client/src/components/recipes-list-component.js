@@ -35,6 +35,7 @@ class RecipesList extends Component {
         axios.post('http://localhost:4000/recipes/update/' + this.state.recipes[i]._id, obj)
             .then(res => console.log(res.data));
     }
+
     viewMainIngredients = (currentRecipe) => {
         let ingredients = currentRecipe.recipe_ingredients;
         return ingredients.split(/\s*,/).slice(0, 2).join(', ').toLowerCase() + ' ...'
@@ -44,7 +45,7 @@ class RecipesList extends Component {
             return (
                 <tr key={i}>
                     <td>{currentRecipe.recipe_name}</td>
-                    <td>View</td>
+                    <td><Link to={"/" + currentRecipe._id}>View</Link></td>
                     <td className="text-center">{currentRecipe.recipe_time + ' min'}</td>
                     <td>{this.viewMainIngredients(currentRecipe)}</td>
                     <td onClick={() => this.handleStarClick(currentRecipe, i)}>
@@ -68,7 +69,7 @@ class RecipesList extends Component {
                             <th>Name</th>
                             <th></th>
                             <th className="text-center"><i className="far fa-clock"></i></th>
-                            <th className="aaa">Ingredients</th>
+                            <th>Ingredients</th>
                             <th></th>
                             <th></th>
                             <th></th>

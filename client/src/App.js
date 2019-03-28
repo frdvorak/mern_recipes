@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from "react-router-dom"
+import './index.css';
 
 import RecipesList from './components/recipes-list-component';
+import ViewRecipe from './components/view-recipe-component';
 import UpdateRecipe from './components/update-recipe-component';
 import AddRecipe from './components/add-recipe-component';
 
 import "bootstrap/dist/css/bootstrap.min.css";
-
 
 import logo from "./logo.jpg";
 import { Navbar, Nav, Form, FormControl, Button } from 'react-bootstrap';
@@ -31,6 +32,7 @@ class App extends Component {
             </Navbar.Collapse>
           </Navbar>
           <Route path="/" exact component={RecipesList} />
+          <Route path="/:id" exact component={ViewRecipe} />
           <Route path="/update/:id" component={UpdateRecipe} />
           <Route path="/add" component={AddRecipe} />
         </div>
