@@ -73,7 +73,7 @@ class UpdateRecipe extends Component {
     }
     render() {
         return (
-            <div style={{ backgroundImage: `url(${this.state.recipe_img})` }}>
+            <div>
                 <h3>Update Recipe</h3>
                 <form onSubmit={this.onSubmit}>
                     <div className="form-group">

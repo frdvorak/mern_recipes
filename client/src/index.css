@@ -6,6 +6,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: black;
 }
 
 code {
@@ -19,3 +20,20 @@ code {
 }
 
 /* view-recipe-component *****************************/
+.viewRecipe__wrapper {
+  display: block;
+  height: 320px;
+}
+.viewRecipe__wrapper__imageDiv {
+  position: relative;
+  display: block;
+  top: 0; 
+  left: 0;
+  width: 50%;
+  height: 300px;
+  float: right;
+  background-size: cover;
+  background-position: center;
+  border: 1px solid black;
+  z-index: -10;
+}

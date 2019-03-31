@@ -60,7 +60,10 @@ class AddRecipe extends Component {
         }
 
         axios.post('http://localhost:4000/recipes/add', newRecipe)
-            .then(res => console.log(res.date));
+            .then(res => console.log(res.data))
+            .catch(function (error) {
+                console.log(error)
+            })
 
         this.setState = {
             recipe_name: '',

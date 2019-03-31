@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import "@fortawesome/fontawesome-free/css/all.css";
-import '../index.css';
+import { Button } from 'react-bootstrap';
 
 
 class ViewRecipe extends Component {
@@ -41,11 +41,22 @@ class ViewRecipe extends Component {
     render() {
         return (
             <div>
-                <div className="imageDiv" style={{ width: "100%", height: "auto", backgroundImage: `url(${this.state.recipe_img})` }}></div>
+
                 <h1>{this.state.recipe_name}</h1>
-                <ul></ul>
-                <button>Go back</button>
-            </div >
+                <div className="viewRecipe__wrapper">
+                    <div className="viewRecipe__wrapper__imageDiv" style={{ backgroundImage: `url(${this.state.recipe_img})` }}></div>
+                    <div className="viewRecipe__wrapper__ingredientsDiv">
+                        <ul>
+                            {this.state.recipe_ingredients.toLowerCase().split(',').map(function (ingredient, i) {
+                                return (
+                                    <li key={i}>{ingredient}</li>
+                                )
+                            })}
+                        </ul>
+                    </div>
+                </div>
+                <Button className="btn-dark float-right" href="/">Go Back</Button>
+            </div>
         );
     }
 }
